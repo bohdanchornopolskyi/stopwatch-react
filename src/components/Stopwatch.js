@@ -11,7 +11,7 @@ const Stopwatch = ({ label, time, buttonHandlers }) => {
             <div className='btn-wrapper'>
                 <Button onClick={buttonHandlers.handleStart} label={label} />
                 <Button onClick={buttonHandlers.handleReset} label='Reset' />
-                <Button onClick={buttonHandlers.handleWait} label='Wait' />
+                <Button id='wait' onClick={buttonHandlers.handleWait} label='Wait' />
             </div>
         </div>
     );
