@@ -3,16 +3,15 @@ import React from 'react';
 import Button from './Button';
 import Indicator from './Indicator';
 
-const Stopwatch = () => {
+const Stopwatch = ({ label, time, buttonHandlers }) => {
     return (
         <div className='wrapper'>
             <h1 className='heading'>Stopwatch</h1>
-            <Indicator time={0} />
+            <Indicator time={time} />
             <div className='btn-wrapper'>
-                <Button label='Start' />
-                <Button label='Stop' />
-                <Button label='Reset' />
-                <Button label='Wait' />
+                <Button onClick={buttonHandlers.handleStart} label={label} />
+                <Button onClick={buttonHandlers.handleReset} label='Reset' />
+                <Button onClick={buttonHandlers.handleWait} label='Wait' />
             </div>
         </div>
     );
