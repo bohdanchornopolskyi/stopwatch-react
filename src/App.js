@@ -67,12 +67,11 @@ const App = () => {
         handleReset: () => {
             if (button === 'Start' && time !== 0) {
                 setTime(0);
-                setDoubleClick(false);
-            } else {
-                setDoubleClick(false);
+            } else if (button === 'Stop') {
                 setTime(0);
                 setWatch(true);
             }
+            setDoubleClick(false);
         },
     };
     return <Stopwatch time={time} label={button} buttonHandlers={buttonHandlers} />;
