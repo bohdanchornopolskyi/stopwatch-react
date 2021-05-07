@@ -1,5 +1,10 @@
+/* import { useState, useMemo } from 'react';
+import { Observable, Subject } from 'rxjs';
+ */
+
+import Stopwatch from './components/Stopwatch';
 function App() {
-    return <div></div>;
+    return <Stopwatch />;
 }
 
 export default App;
