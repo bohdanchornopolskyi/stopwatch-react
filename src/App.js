@@ -11,6 +11,8 @@ function App() {
     const [doubleClick, setDoubleClick] = useState(false);
 
     useEffect(() => {
+        !watch ? setButton('Start') : setButton('Stop');
+
         let click$ = null;
         if (document.getElementById('wait')) {
             click$ = fromEvent(document.getElementById('wait'), 'click');
@@ -25,8 +27,6 @@ function App() {
         doubleClick$.subscribe((e) => {
             setDoubleClick(true);
         });
-
-        !watch ? setButton('Start') : setButton('Stop');
 
         const timer$ = new Observable((observer) => {
             let count = 0;
@@ -53,28 +53,27 @@ function App() {
         };
     }, [watch]);
 
-    const handleStart = () => {
-        setWatch((prevState) => !prevState);
-        if (button === 'Stop') {
-            setTime(0);
-        }
+    const buttonHandlers = {
+        handleStart: () => {
+            setWatch((prevState) => !prevState);
+            if (button === 'Stop') {
+                setTime(0);
+            }
+        },
+        handleWait: () => {
+            if (time !== 0 && doubleClick) {
+                setWatch(false);
+            }
+        },
+        handleReset: () => {
+            if (button === 'Start' && time !== 0) {
+                setTime(0);
+            } else {
+                setTime(0);
+                setWatch(true);
+            }
+        },
     };
-    const handleWait = () => {
-        if (time !== 0 && doubleClick) {
-            setWatch(false);
-        }
-    };
-    const handleReset = () => {
-        if (button === 'Start' && time !== 0) {
-            setTime(0);
-        } else {
-            setTime(0);
-            setWatch(true);
-        }
-    };
-
-    const buttonHandlers = { handleStart, handleWait, handleReset };
-
     return <Stopwatch time={time} label={button} buttonHandlers={buttonHandlers} />;
 }
 
