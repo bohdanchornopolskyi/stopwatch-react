@@ -38,8 +38,12 @@ function App() {
         }
     };
     const handleReset = () => {
-        setTime(0);
-        setWatch(true);
+        if (button === 'Start' && time !== 0) {
+            setTime(0);
+        } else {
+            setTime(0);
+            setWatch(true);
+        }
     };
 
     const buttonHandlers = { handleStart, handleWait, handleReset };

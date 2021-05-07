@@ -17,7 +17,7 @@ const Indicator = ({ time }) => {
         }
         return hours + ':' + minutes + ':' + seconds;
     };
-    return <h1 className='indicator'>{formatTime(time)}</h1>;
+    return <h1 className='screen'>{formatTime(time)}</h1>;
 };
 
 export default Indicator;
