@@ -4,7 +4,7 @@ import { map, buffer, debounceTime, filter, takeUntil } from 'rxjs/operators';
 
 import Stopwatch from './components/Stopwatch';
 
-function App() {
+const App = () => {
     const [time, setTime] = useState(0);
     const [watch, setWatch] = useState(false);
     const [button, setButton] = useState('Start');
@@ -76,6 +76,6 @@ function App() {
         },
     };
     return <Stopwatch time={time} label={button} buttonHandlers={buttonHandlers} />;
-}
+};
 
 export default App;
