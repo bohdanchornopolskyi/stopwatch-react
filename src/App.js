@@ -13,10 +13,7 @@ function App() {
     useEffect(() => {
         !watch ? setButton('Start') : setButton('Stop');
 
-        let click$ = null;
-        if (document.getElementById('wait')) {
-            click$ = fromEvent(document.getElementById('wait'), 'click');
-        }
+        const click$ = fromEvent(document.getElementById('wait'), 'click');
 
         const doubleClick$ = click$.pipe(
             buffer(click$.pipe(debounceTime(300))),
@@ -56,8 +53,10 @@ function App() {
     const buttonHandlers = {
         handleStart: () => {
             setWatch((prevState) => !prevState);
+            setDoubleClick(false);
             if (button === 'Stop') {
                 setTime(0);
+                setDoubleClick(false);
             }
         },
         handleWait: () => {
@@ -68,7 +67,9 @@ function App() {
         handleReset: () => {
             if (button === 'Start' && time !== 0) {
                 setTime(0);
+                setDoubleClick(false);
             } else {
+                setDoubleClick(false);
                 setTime(0);
                 setWatch(true);
             }

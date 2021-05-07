@@ -13,6 +13,7 @@ const Stopwatch = ({ label, time, buttonHandlers }) => {
                 <Button onClick={buttonHandlers.handleReset} label='Reset' />
                 <Button id='wait' onClick={buttonHandlers.handleWait} label='Wait' />
             </div>
+            <p className='made-by'>Made by Bohdan Chornopolskyi</p>
         </div>
     );
 };

@@ -1,1 +1,1 @@
-Stop watch
+Stopwatch made using React and Rxjs.
